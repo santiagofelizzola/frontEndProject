@@ -1,0 +1,85 @@
+body{
+    margin-left: 2em;
+    margin-right: 2em;
+}
+.reel{
+    width: 15%;
+}
+#nav{
+    border: solid black 2px;
+}
+
+#bootstrapNav{
+    background-color: rgb(255, 255, 255) !important;
+    width: 100%;
+}
+#searchBar{
+    margin: 0 auto;
+    display: block;
+    
+}
+#searchBox, #searchButton{
+    border-radius: 30px 30px;
+}
+#searchButton:hover{
+    background-color: rgb(59, 79, 112);
+    color: white;
+    
+}
+#searchButton{
+    border: solid black 0.5px;
+    color: black;
+}
+.nav-item{
+    list-style: none;
+}
+#acct{
+    margin-right: 2em;
+}
+
+.generator{
+    border: solid purple 2px;
+    height: 500px;
+    display: flex;
+}
+.trailer{
+    border:solid purple 2px;
+    width: 70%;
+    padding: 1em;
+    margin: 0.5em;
+}
+
+.poster{
+    border: solid purple 2px;
+    width: 30%;
+    padding: 1em;
+    margin: 0.5em;
+}
+.info{
+    border: solid blue;
+    height: 500px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+}
+.description{
+    border: solid pink 2px;
+    padding: 1em;
+    margin: 0.5em;
+    grid-row: 1 / span 2;
+}
+.synopsis{
+    border: solid pink 2px;
+    padding: 1em;
+    margin: 0.5em;
+}
+.cast{
+    border: solid pink 2px;
+    padding: 1em;
+    margin: 0.5em;
+}
+.watch{
+    border: solid pink 2px;
+    padding: 1em;
+    margin: 0.5em;
+}
