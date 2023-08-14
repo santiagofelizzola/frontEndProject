@@ -38,6 +38,47 @@ const popMovieID = async () => {
 
 // console.log(popMovieID())
 
+
+poptv = async () => {
+    const titleCodes;
+    const url =
+    "https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US";
+  const options = {
+    headers: {
+      method: "GET",
+      "X-RapidAPI-Key": "80b360fcefmsh174cc3d1b1f6f97p1d3709jsn5ee1ff6263e8", //df
+      "X-RapidAPI-Host": "imdb8.p.rapidapi.com",
+    },
+  };
+
+  try {
+    const response = await fetch(
+      "https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US",
+      options
+    );
+    const result = await response.json();
+    tvData = result;
+
+    for (let i = 0; i < tvData.length; i++) {
+      tvData[i] = tvData[i].replaceAll("/title/", "");
+      tvData[i] = tvData[i].replaceAll("/", "");
+    }
+    //Get random TV ID
+    const randomShow = Math.floor(Math.random() * tvData.length);
+    console.log("Random index:", randomShow);
+    console.log("Random element:", tvData[randomShow]);
+    return tvData[randomShow];
+    console.log(tvData);
+
+    const infoDiv = document.createElement("div");
+    infoDiv.textContent = result;
+    document.getElementById("description").appendChild(infoDiv);
+    console.log(result);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 //Get Basic API w ttID embeded
 const getBasic = async (ttID) => {
     const getBasicURL = `https://streaming-availability.p.rapidapi.com/v2/get/basic?country=us&imdb_id=${ttID}&output_language=en`;
