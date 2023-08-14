@@ -120,7 +120,12 @@
                 tvData[i] = tvData[i].replaceAll("/title/", "");
                 tvData[i] = tvData[i].replaceAll("/", "")
             }
-            
+            //Get random Movie ID
+            const randomShow = Math.floor(Math.random() * tvData.length);
+            console.log("Random index:", randomShow);
+            console.log("Random element:", tvData[randomShow]);
+            return tvData[randomShow]
+            console.log(tvData)
             
             const infoDiv=document.createElement('div');
             infoDiv.textContent=result;
@@ -129,21 +134,17 @@
         } catch (error) {
             console.error(error);
         }
+        
     };
     poptv().then(() => {
         console.log("TV data fetched and processed.");})
         
-        // function extractID() {
-        //     const id = inputString.replace("/title/", "").replace("/", "");
-        //     return id;
-        // };
-        
-        // const inputString = "/title/000000/";
-        // const extractedID = extractID(inputString);
-        // console.log(extractedID); // Output: tt5180504
+      
     
-    
-    
+
+
+
+
     
     // * API data to incorporate later * //
     
