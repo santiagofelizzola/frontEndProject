@@ -16,12 +16,10 @@
     <title>Media Flare</title>
   </head>
 
-
-
     <body>
-       
+       <div class="body-container">
       <nav id="nav" class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
+        <div id="navDiv" class="container-fluid">
           <img class="reel" src="images/kisspng-film-reel-clip-art-film-reel-5a77adaada3615.0224609415177926828938.png" alt="" class="scr">
           <a class="navbar-brand" href="#">Media Flare</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,11 +44,7 @@
                 </ul>
               
             </ul>
-            <div class="gen">
-            <a class="" href="">
-                <img id="generateBtnIcon" src="images/video.png" alt="generateBtnIcon">
-              </a></div>
-              <div class="button">
+            
             <form id="searchBar" class="d-flex" role="search">
               <input id="searchBox" class="form-control me-2" type="search" placeholder="Titles" aria-label="Search">
               <button id="searchButton" class="btn btn-outline-success" type="submit">Search</button>
@@ -63,14 +57,28 @@
         </div>
       </nav>
 
+       <div class="banner">
+        <img class="film" src="images/Screen Shot 2023-08-14 at 11.20.35 AM.png" alt=""><img class="film" src="images/Screen Shot 2023-08-14 at 11.20.35 AM.png" alt="">
+      </div>
+
+
+
       <div class="generator">
         <div class="poster">poster</div>
         <div class="trailer">trailer</div>
     </div>
-    <!--<div class="buttonDiv">
-        <button class="generateBtn"></button>
-    </div>-->
+    
 
+    
+    
+   <div class="genBtnBox">
+    <div class="gen">
+      <a class="genBtn" href="">
+          <img id="generateBtnIcon" src="images/1910.i309.028.F.m004.c7.cinema film production realistic transparent-03.jpg" alt="generateBtnIcon"> <p>Surprise Me</p>
+        </a> 
+      </div>
+     </div>   
+    
     <div class="info">
        <div class="description">
         <h3 class="title">title</h3>
@@ -81,7 +89,7 @@
        <div class="watch">watch</div>
        
     </div>
-   
+  
     <script src="script.js"></script>
 </body>
 </html>
