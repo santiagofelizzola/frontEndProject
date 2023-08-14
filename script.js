@@ -169,13 +169,16 @@ const grabInfo = async() => {
         console.log(title)
         const overview = data.result.overview
         console.log(overview)
+        const posterURL = data.result.posterURLs.original;
+        console.log(posterURL)
         const trailerLink = data.result.youtubeTrailerVideoLink;
         console.log(trailerLink)
         const cast = data.result.cast.join(', ');
         console.log(cast)
-        return {title, overview, trailerLink, cast}
+        return {title, overview, posterURL, trailerLink, cast}
     } catch(error) {
         console.error('An error occurred:', error);
+        await grabInfo()
     }
 }
 // console.log(grabInfo())
