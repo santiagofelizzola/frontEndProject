@@ -7,7 +7,9 @@ const popMovieID = async () => {
         method: 'GET',
         headers: {
             'X-RapidAPI-Key': '48e1d91eaamsh7d1603a58366f17p12af73jsn09e18c026e08',
-            'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
+            'X-RapidAPI-Key': '80b360fcefmsh174cc3d1b1f6f97p1d3709jsn5ee1ff6263e8', // DF
+            'X-RapidAPI-Host': 'imdb8.p.rapidapi.com',
+            
         }
     };
 
@@ -88,12 +90,50 @@ const grabTrailer = async () => {
 
 
 
+//
+poptv = async () => {
+    const url = 'https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US';
+    const options = {
+        headers: {
+            method: 'GET',
+            'X-RapidAPI-Key': '48e1d91eaamsh7d1603a58366f17p12af73jsn09e18c026e08',
+            'X-RapidAPI-Key': '80b360fcefmsh174cc3d1b1f6f97p1d3709jsn5ee1ff6263e8',  //df
+            'X-RapidAPI-Host': 'imdb8.p.rapidapi.com',
+
+        }
+    };
+    
+    try {
+        const response = await fetch("https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US", options);
+        const result = await response.json();
+        const divTag=document.createElement('div');
+        divTag.textContent=result;
+        document.getElementById('contentDiv').appendChild(divTag);
+        console.log(result);
+    } catch (error) {
+        console.error(error);
+    }
+};
+console.log(poptv);
+    
+
+
+
+
+
+
+
+
+
+
 
 // * API data to incorporate later * //
 
     // Most Popular TV-Shows
         // URL: 'https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US'
         // Will give tv shows // will need to extract ttID just as we did with Popular Movies
+
+
 
     // Film Info: Images, Title, Genres, Plot, # of Seasons
         // URL: 'https://imdb8.p.rapidapi.com/title/get-overview-details?tconst=tt5180504&currentCountry=US'
