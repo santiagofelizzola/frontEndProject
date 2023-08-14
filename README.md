@@ -5,6 +5,15 @@ movies
 - behind the scene
 - cast
 - trailer
+TEAM: Vanessa McCollum, Santiago Felizzola, Deron Fambro, Keamber Pearson
+
+REMAINING REQUIRMENTS
+(implament AJAX, needs what js library we used, screenshots of the finished product, deploy our site (i was using netlify))
+
+
+//what out website does
+
+Our website is a random movie/tv show recommendation generator. Upon a click of the button the page loads a recommendation, an image of the movie poster, information about what the movie/tv show is about, a link to the trailer, and where you can watch the recommendation. We used the rapidapi website to get API's that will retrive our data and display it to the user. 
 
 //popular movies/tv API explanation
 The first functon to be coded was the popMovies function that fetches info about popular movies using a asynchronous function. We used the IMDb API and the function returns the id of a randomly selected movie from a list. In the option object we have the required headers for the API and inside the try block the code makes a GET request, converts the response from the API to JSON format and stores the data in the results variable. The for loop goes through each movie in the moviesData array and replaces the string "/titles/" and "/" in each movie's string to leave only the movie data. The code from the movie titles generates a random index within the range of the moviesData array length and is used to select a random movie. The function then returns the selected movie title and displays it in text and if an error were to occur during the API request or processing, the error is caught in the catch block and an error message is logged to the console. The popular TV function goes through the exact same process as the popular movies API it just fetches TV shows instead of movies.
