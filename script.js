@@ -123,5 +123,23 @@ try {
 }
 // console.log(getOverview())
 
+
+// Function 
+const getSynopsis = async() => {
+    let synopsis;
+    try {
+        const ttNum = await popMovieID();
+        // console.log(ttNum)
+        const data = await getOverview(ttNum);
+        // console.log(data);
+        synopsis = data.plotOutline.text;
+        console.log(synopsis)
+        return synopsis
+    } catch (error) {
+        console.error(error)
+    }
+}
+// console.log(getSynopsis())
+
     // We should only use Streaming Services for the trailer,  streaming info, & cast because there are only 100 calls/day with each key.
     // We can get all the other info from IMDb
