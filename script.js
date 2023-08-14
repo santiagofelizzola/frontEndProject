@@ -106,9 +106,8 @@ poptv = async () => {
     try {
         const response = await fetch("https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US", options);
         const result = await response.json();
-        const divTag=document.createElement('div');
-        divTag.textContent=result;
-        document.getElementById('contentDiv').appendChild(divTag);
+        title.textContent=result;
+        document.getElementById('contentDiv').appendChild(title);
         console.log(result);
     } catch (error) {
         console.error(error);
