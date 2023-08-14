@@ -6,7 +6,7 @@ const popMovieID = async () => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '48e1d91eaamsh7d1603a58366f17p12af73jsn09e18c026e08',
+            'X-RapidAPI-Key': '4c17913e8emsh9b101b9899fc9fcp1dd57ajsnf0c65e109735',
             'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
         }
     };
@@ -45,7 +45,7 @@ const getBasic = async (ttID) => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '48e1d91eaamsh7d1603a58366f17p12af73jsn09e18c026e08',
+            'X-RapidAPI-Key': '4c17913e8emsh9b101b9899fc9fcp1dd57ajsnf0c65e109735',
             'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
         }
     };
@@ -106,7 +106,7 @@ const getOverview = async(ttID) => {
 const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '48e1d91eaamsh7d1603a58366f17p12af73jsn09e18c026e08',
+		'X-RapidAPI-Key': '4c17913e8emsh9b101b9899fc9fcp1dd57ajsnf0c65e109735',
 		'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
 	}
 };
