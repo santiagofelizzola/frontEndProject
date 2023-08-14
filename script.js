@@ -61,7 +61,6 @@ const getBasic = async (ttID) => {
 }
 // console.log(getBasic())
 
-
 // Function to grab the trailer from Streaming Services API
 const grabTrailer = async () => {
     let movieTrailer;
@@ -86,9 +85,6 @@ const grabTrailer = async () => {
 };
 // console.log(grabTrailer())
 
-
-
-
 // * API data to incorporate later * //
 
     // Most Popular TV-Shows
@@ -98,64 +94,6 @@ const grabTrailer = async () => {
     // Film Info: Images, Title, Genres, Plot, # of Seasons
         // URL: 'https://imdb8.p.rapidapi.com/title/get-overview-details?tconst=tt5180504&currentCountry=US'
         // Will only work with ttID dynamically embeded in URL
-
-
-// Function to get all the data in IMDB API with endpoint Get Overview
-const getOverview = async(ttID) => {
-    const url = `https://imdb8.p.rapidapi.com/title/get-overview-details?tconst=${ttID}&currentCountry=US`;
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '4c17913e8emsh9b101b9899fc9fcp1dd57ajsnf0c65e109735',
-		'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
-	}
-};
-
-try {
-	const response = await fetch(url, options);
-	const data = await response.json();
-	console.log(data);
-    return data
-
-} catch (error) {
-	console.error(error);
-}
-}
-// console.log(getOverview())
-
-
-// Function 
-const getSynopsis = async() => {
-    let synopsis;
-    try {
-        const ttNum = await popMovieID();
-        // console.log(ttNum)
-        const data = await getOverview(ttNum);
-        // console.log(data);
-        synopsis = data.plotOutline.text;
-        console.log(synopsis)
-        return synopsis
-    } catch (error) {
-        console.error(error)
-    }
-}
-// console.log(getSynopsis())
-
-//Grab Image
-const getPosterURL = async() => {
-    let poster;
-    try {
-        const ttNum = await popMovieID();
-        const data = await getOverview(ttNum);
-        console.log(data)
-        poster = data.title.image.url;
-        console.log(poster)
-        return poster
-    } catch (error) {
-        console.error(error)
-    }
-}
-// console.log(getPosterURL())
 
     // We should only use Streaming Services for the trailer,  streaming info, & cast because there are only 100 calls/day with each key.
     // We can get all the other info from IMDb
