@@ -6,7 +6,7 @@ const popMovieID = async () => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '48e1d91eaamsh7d1603a58366f17p12af73jsn09e18c026e08',
+            'X-RapidAPI-Key': '4c17913e8emsh9b101b9899fc9fcp1dd57ajsnf0c65e109735',
             'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
         }
     };
@@ -84,7 +84,7 @@ const grabTrailer = async () => {
         await grabTrailer();
     }
 };
-// grabTrailer()
+// console.log(grabTrailer())
 
 
 
@@ -106,7 +106,7 @@ const getOverview = async(ttID) => {
 const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '48e1d91eaamsh7d1603a58366f17p12af73jsn09e18c026e08',
+		'X-RapidAPI-Key': '4c17913e8emsh9b101b9899fc9fcp1dd57ajsnf0c65e109735',
 		'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
 	}
 };
@@ -123,5 +123,59 @@ try {
 }
 // console.log(getOverview())
 
+
+// Function 
+const getSynopsis = async() => {
+    let synopsis;
+    try {
+        const ttNum = await popMovieID();
+        // console.log(ttNum)
+        const data = await getOverview(ttNum);
+        // console.log(data);
+        synopsis = data.plotOutline.text;
+        console.log(synopsis)
+        return synopsis
+    } catch (error) {
+        console.error(error)
+    }
+}
+// console.log(getSynopsis())
+
+//Grab Image
+const getPosterURL = async() => {
+    let poster;
+    try {
+        const ttNum = await popMovieID();
+        const data = await getOverview(ttNum);
+        console.log(data)
+        poster = data.title.image.url;
+        console.log(poster)
+        return poster
+    } catch (error) {
+        console.error(error)
+    }
+}
+// console.log(getPosterURL())
+
     // We should only use Streaming Services for the trailer,  streaming info, & cast because there are only 100 calls/day with each key.
     // We can get all the other info from IMDb
+
+// Grab as much info as possible from one fetch
+const grabInfo = async() => {
+    try { 
+        const ttNum = await popMovieID();
+        const data = await getBasic(ttNum);
+        const title = data.result.title;
+        console.log(title)
+        const overview = data.result.overview
+        console.log(overview)
+        const trailerLink = data.result.youtubeTrailerVideoLink;
+        console.log(trailerLink)
+        const cast = data.result.cast.join(', ');
+        console.log(cast)
+        return {title, overview, trailerLink, cast}
+    } catch(error) {
+        console.error('An error occurred:', error);
+    }
+}
+// console.log(grabInfo())
