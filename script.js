@@ -141,5 +141,21 @@ const getSynopsis = async() => {
 }
 // console.log(getSynopsis())
 
+//Grab Image
+const getPosterURL = async() => {
+    let poster;
+    try {
+        const ttNum = await popMovieID();
+        const data = await getOverview(ttNum);
+        console.log(data)
+        poster = data.title.image.url;
+        console.log(poster)
+        return poster
+    } catch (error) {
+        console.error(error)
+    }
+}
+console.log(getPosterURL())
+
     // We should only use Streaming Services for the trailer,  streaming info, & cast because there are only 100 calls/day with each key.
     // We can get all the other info from IMDb
