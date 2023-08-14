@@ -40,7 +40,6 @@ const popMovieID = async () => {
 
 
 poptv = async () => {
-    const titleCodes;
     const url =
     "https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US";
   const options = {
