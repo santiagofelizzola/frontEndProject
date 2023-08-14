@@ -6,3 +6,4 @@ movies
 - cast
 - trailer
 
+hide button

@@ -1,149 +1,147 @@
 //this makes the generate button disappear after clicking
-// document.getElementById('generateBtnIcon').addEventListener('click', function generateSite(){
-    
-    
-    
-    
-    
-    // IMDb Most Popular Movies - Used to collect the specific ttID to know what movie is being targeted
-    let moviesData;
-    const popMovieID = async () => {
-        const popMovieURL = "https://imdb8.p.rapidapi.com/title/get-most-popular-movies?homeCountry=US&purchaseCountry=US&currentCountry=US"
-        const url = popMovieURL;
-        const options = {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': '48e1d91eaamsh7d1603a58366f17p12af73jsn09e18c026e08',
-                'X-RapidAPI-Key': '80b360fcefmsh174cc3d1b1f6f97p1d3709jsn5ee1ff6263e8', // DF
-                'X-RapidAPI-Host': 'imdb8.p.rapidapi.com',
-                
-            }
-        };
+
+// document.getElementById("generateBtnIcon").addEventListener("click", function generateSite(){
+//     document.getElementById("generateBtnIcon").style.display='none';
+//     document.getElementById("generateBtnIcon").style.display="block"
+//     console.log(generateSite)
         
-        try {
-            const response = await fetch(url, options);
-            const result = await response.json();
-            moviesData = result;
-            // console.log(moviesData);
-            
-            /* The code is iterating over each element in the `moviesData` array and replacing the string
-            "/title/" with an empty string. It then logs the updated string to the console. */
-            for (let i = 0; i < moviesData.length; i++) {
-                moviesData[i] = moviesData[i].replaceAll("/title/", "");
-                moviesData[i] = moviesData[i].replaceAll("/", "")
-                // console.log(moviesData[i])
-            }
-            
-            //Get random Movie ID
-            const randomMovie = Math.floor(Math.random() * moviesData.length);
-            console.log("Random index:", randomMovie);
-            console.log("Random element:", moviesData[randomMovie]);
-            return moviesData[randomMovie]
-            
-        } catch (error) {
-            console.error(error);
-        }
-    }
-    
-    // console.log(popMovies())
-    
-    //Get Basic API w ttID embeded
-    const getBasic = async (ttID) => {
-        const getBasicURL = `https://streaming-availability.p.rapidapi.com/v2/get/basic?country=us&imdb_id=${ttID}&output_language=en`;
-        const url = getBasicURL;
-        const options = {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': '48e1d91eaamsh7d1603a58366f17p12af73jsn09e18c026e08',
-                'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
-            }
-        };
         
-        try {
-            const response = await fetch(url, options);
-            const data = await response.json();
-            console.log(data);
-            return data
-        } catch (error) {
-            console.error(error);
-        }
-    }
-    // console.log(getBasic())
-    
-    
-    // Function to grab the trailer from Streaming Services API
-    const grabTrailer = async () => {
-        let movieTrailer;
-        try {
-            // input returned data from popMovieID into variable ttNum
-            const ttNum = await popMovieID();
-            console.log(ttNum)
-            // input returned data from getBasic with embeded new data from popMovieID, into variable data
-            const data = await getBasic(ttNum);
-            console.log(data);
-            // Dive into the object in data and target specifically the value inside of `youtubeTrailerVideoLink` and re-assign to movieTrailer
-            movieTrailer = data.result.youtubeTrailerVideoLink;
-            console.log(movieTrailer);
-            // Log movie title just to fact check
-            console.log(data.result.title);
-            return movieTrailer;
-        } catch (error) {
-            console.error('An error occurred:', error);
-            // Call the function again to retry if error occurs
-            await grabTitle();
-        }
-    };
-    // grabTrailer()
-    
-    
-    const titleCodes=[]
-    
-    poptv = async () => {
-        const url = 'https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US';
-        const options = {
-            headers: {
+        
+        
+        // IMDb Most Popular Movies - Used to collect the specific ttID to know what movie is being targeted
+        let moviesData;
+        const popMovieID = async () => {
+            const popMovieURL = "https://imdb8.p.rapidapi.com/title/get-most-popular-movies?homeCountry=US&purchaseCountry=US&currentCountry=US"
+            const url = popMovieURL;
+            const options = {
                 method: 'GET',
-                'X-RapidAPI-Key': '80b360fcefmsh174cc3d1b1f6f97p1d3709jsn5ee1ff6263e8',  //df
-                'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
-                
-            }
-        };
-        
-        try {
-            const response = await fetch("https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US", options);
-            const result = await response.json();
-            tvData=result;
-
-
-
-            for (let i = 0; i < tvData.length; i++) {
-                tvData[i] = tvData[i].replaceAll("/title/", "");
-                tvData[i] = tvData[i].replaceAll("/", "")
-            }
-            //Get random Movie ID
-            const randomShow = Math.floor(Math.random() * tvData.length);
-            console.log("Random index:", randomShow);
-            console.log("Random element:", tvData[randomShow]);
-            return tvData[randomShow]
-            console.log(tvData)
+                headers: {
+                    'X-RapidAPI-Key': '48e1d91eaamsh7d1603a58366f17p12af73jsn09e18c026e08',
+                    'X-RapidAPI-Key': '80b360fcefmsh174cc3d1b1f6f97p1d3709jsn5ee1ff6263e8', // DF
+                    'X-RapidAPI-Host': 'imdb8.p.rapidapi.com',
+                    
+                }
+            };
             
-            const infoDiv=document.createElement('div');
-            infoDiv.textContent=result;
-            document.getElementById("description").appendChild(infoDiv);
-            console.log(result);
-        } catch (error) {
-            console.error(error);
+            try {
+                const response = await fetch(url, options);
+                const result = await response.json();
+                moviesData = result;
+                // console.log(moviesData);
+                
+                /* The code is iterating over each element in the `moviesData` array and replacing the string
+                "/title/" with an empty string. It then logs the updated string to the console. */
+                for (let i = 0; i < moviesData.length; i++) {
+                    moviesData[i] = moviesData[i].replaceAll("/title/", "");
+                    moviesData[i] = moviesData[i].replaceAll("/", "")
+                    // console.log(moviesData[i])
+                }
+                
+                //Get random Movie ID
+                const randomMovie = Math.floor(Math.random() * moviesData.length);
+                console.log("Random index:", randomMovie);
+                console.log("Random element:", moviesData[randomMovie]);
+                return moviesData[randomMovie]
+                
+            } catch (error) {
+                console.error(error);
+            }
         }
         
-    };
-    poptv().then(() => {
-        console.log("TV data fetched and processed.");})
+        // console.log(popMovies())
         
-      
-    
-
-
-
+        //Get Basic API w ttID embeded
+        const getBasic = async (ttID) => {
+            const getBasicURL = `https://streaming-availability.p.rapidapi.com/v2/get/basic?country=us&imdb_id=${ttID}&output_language=en`;
+            const url = getBasicURL;
+            const options = {
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': '48e1d91eaamsh7d1603a58366f17p12af73jsn09e18c026e08',
+                    'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
+                }
+            };
+            
+            try {
+                const response = await fetch(url, options);
+                const data = await response.json();
+                console.log(data);
+                return data
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        // console.log(getBasic())
+        
+        
+        // Function to grab the trailer from Streaming Services API
+        const grabTrailer = async () => {
+            let movieTrailer;
+            try {
+                // input returned data from popMovieID into variable ttNum
+                const ttNum = await popMovieID();
+                console.log(ttNum)
+                // input returned data from getBasic with embeded new data from popMovieID, into variable data
+                const data = await getBasic(ttNum);
+                console.log(data);
+                // Dive into the object in data and target specifically the value inside of `youtubeTrailerVideoLink` and re-assign to movieTrailer
+                movieTrailer = data.result.youtubeTrailerVideoLink;
+                console.log(movieTrailer);
+                // Log movie title just to fact check
+                console.log(data.result.title);
+                return movieTrailer;
+            } catch (error) {
+                console.error('An error occurred:', error);
+                // Call the function again to retry if error occurs
+                await grabTitle();
+            }
+        };
+        // grabTrailer()
+        
+        
+        const titleCodes=[]
+        
+        poptv = async () => {
+            const url = 'https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US';
+            const options = {
+                headers: {
+                    method: 'GET',
+                    'X-RapidAPI-Key': '80b360fcefmsh174cc3d1b1f6f97p1d3709jsn5ee1ff6263e8',  //df
+                    'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
+                    
+                }
+            };
+            
+            try {
+                const response = await fetch("https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US", options);
+                const result = await response.json();
+                tvData=result;
+                
+                
+                
+                for (let i = 0; i < tvData.length; i++) {
+                    tvData[i] = tvData[i].replaceAll("/title/", "");
+                    tvData[i] = tvData[i].replaceAll("/", "")
+                }
+                //Get random Movie ID
+                const randomShow = Math.floor(Math.random() * tvData.length);
+                console.log("Random index:", randomShow);
+                console.log("Random element:", tvData[randomShow]);
+                return tvData[randomShow];
+                console.log(tvData);
+                
+                const infoDiv=document.createElement('div');
+                infoDiv.textContent=result;
+                document.getElementById("description").appendChild(infoDiv);
+                console.log(result);
+            } catch (error) {
+                console.error(error);
+            }
+            
+        }
+        
+        
+    // });
 
     
     // * API data to incorporate later * //
@@ -160,3 +158,5 @@
 
     // We should only use Streaming Services for the trailer + streaming info because there are only 100 calls/day with each key.
     // We can get all the other info from IMDb
+
+
