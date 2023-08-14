@@ -36,7 +36,7 @@ const popMovieID = async () => {
     }
 }
 
-// console.log(popMovies())
+// console.log(popMovieID())
 
 //Get Basic API w ttID embeded
 const getBasic = async (ttID) => {
@@ -66,10 +66,10 @@ const getBasic = async (ttID) => {
 const grabTrailer = async () => {
     let movieTrailer;
     try {
-        // input returned data from popMovieID into variable ttNum
+        // input returned data from popMovieID function into variable 'ttNum'
         const ttNum = await popMovieID();
         console.log(ttNum)
-        // input returned data from getBasic with embeded new data from popMovieID, into variable data
+        // input returned data from getBasic with embeded new data from popMovieID, into variable 'data'
         const data = await getBasic(ttNum);
         console.log(data);
         // Dive into the object in data and target specifically the value inside of `youtubeTrailerVideoLink` and re-assign to movieTrailer
@@ -81,7 +81,7 @@ const grabTrailer = async () => {
     } catch (error) {
         console.error('An error occurred:', error);
         // Call the function again to retry if error occurs
-        await grabTitle();
+        await grabTrailer();
     }
 };
 // grabTrailer()
@@ -99,5 +99,29 @@ const grabTrailer = async () => {
         // URL: 'https://imdb8.p.rapidapi.com/title/get-overview-details?tconst=tt5180504&currentCountry=US'
         // Will only work with ttID dynamically embeded in URL
 
-    // We should only use Streaming Services for the trailer + streaming info because there are only 100 calls/day with each key.
+
+// Function to get all the data in IMDB API with endpoint Get Overview
+const getOverview = async(ttID) => {
+    const url = `https://imdb8.p.rapidapi.com/title/get-overview-details?tconst=${ttID}&currentCountry=US`;
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '48e1d91eaamsh7d1603a58366f17p12af73jsn09e18c026e08',
+		'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
+	}
+};
+
+try {
+	const response = await fetch(url, options);
+	const data = await response.json();
+	console.log(data);
+    return data
+
+} catch (error) {
+	console.error(error);
+}
+}
+// console.log(getOverview())
+
+    // We should only use Streaming Services for the trailer,  streaming info, & cast because there are only 100 calls/day with each key.
     // We can get all the other info from IMDb
