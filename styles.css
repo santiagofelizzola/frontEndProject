@@ -3,20 +3,23 @@ body{
     margin-right: 2em;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 /*change background to black*/
+background-color: rgb(239, 237, 237);
 }
 .reel{
     width: 10%;
 }
 #nav{
-    border: solid black 2px;
+    
     display: flex;
     align-items: center;
+    background-color: rgb(255, 255, 255) !important;
     justify-content: space-between;
+
     
 }
 
 #bootstrapNav{
-    background-color: rgb(0, 0, 0) !important;
+    color: white;
     width: 100%;
 }
 #searchBar{
@@ -31,7 +34,7 @@ body{
     border-radius: 30px 30px;
 }
 #searchButton:hover{
-    background-color: rgb(59, 79, 112);
+    background-color: rgb(75, 112, 173);
     color: white;
     
 }
@@ -65,13 +68,13 @@ body{
 }
 
 .poster{
-    border: solid purple 2px;
+    border: solid rgb(243, 243, 243) 2px;
     width: 30%;
     padding: 1em;
     margin: 0.5em;
 }
 .info{
-    border: solid blue;
+    border: solid rgb(245, 245, 249);
     height: 500px;
     display: grid;
     grid-template-columns: 50% 50%;
@@ -98,13 +101,14 @@ body{
     padding: 1em;
     margin: 0.5em;
 }
-.generateBtnIcon{
+#generateBtnIcon{
     width: 60%;
+
 }
 
-.generateBtnIcon a:hover{ 
-    animation: pulse 1s infinite;
-    animation-timing-function: linear;   
+#generateBtnIcon a:hover{ 
+    animation: pulse 1.5s infinite;
+    /*animation-timing-function: linear;*/
 }
       
 @keyframes generateBtnIcon {
@@ -119,7 +123,7 @@ body{
 
 .gen{
     
-    border: solid black 1px;
+    
     width: 100px;
     position: relative;
     margin-right: 25em;
@@ -143,6 +147,8 @@ body{
 }
 .navbar-brand{
     margin-right: 0.5em;
+    color:  rgb(75, 112, 173);
+
 }
 #searchBox {
     margin-left: -15em;
