@@ -1,21 +1,30 @@
 body{
     margin-left: 2em;
     margin-right: 2em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+/*change background to black*/
 }
 .reel{
-    width: 15%;
+    width: 10%;
 }
 #nav{
     border: solid black 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
 }
 
 #bootstrapNav{
-    background-color: rgb(255, 255, 255) !important;
+    background-color: rgb(0, 0, 0) !important;
     width: 100%;
 }
 #searchBar{
+    align-items: center;
     margin: 0 auto;
     display: block;
+    
+   
     
 }
 #searchBox, #searchButton{
@@ -27,14 +36,20 @@ body{
     
 }
 #searchButton{
-    border: solid black 0.5px;
+    border: solid rgb(0, 0, 0) 0.5px;
     color: black;
+    
+}
+.button{
+    position: relative;
 }
 .nav-item{
     list-style: none;
 }
 #acct{
     margin-right: 2em;
+   
+    margin-left: 4em;
 }
 
 .generator{
@@ -83,3 +98,64 @@ body{
     padding: 1em;
     margin: 0.5em;
 }
+.generateBtnIcon{
+    width: 60%;
+}
+
+.generateBtnIcon a:hover{ 
+    animation: pulse 1s infinite;
+    animation-timing-function: linear;   
+}
+      
+@keyframes generateBtnIcon {
+    0% { transform: scale(1); 
+    }
+    50% { transform: scale(1.1);
+    }
+    100% { transform: scale(1); 
+    }     
+}
+
+
+.gen{
+    
+    border: solid black 1px;
+    width: 100px;
+    position: relative;
+    margin-right: 25em;
+    display: grid;
+   
+}
+.genText{
+   font-size: 12px;
+}
+
+/* .navbar-brand, #list, #explore, #generateBtnIconBox{
+    border: solid black 2px;;
+} */
+#list{
+    width: 6em;
+    margin-right: 1em;
+    display: inline-block;
+}
+#explore{
+    margin-right: 1em;
+}
+.navbar-brand{
+    margin-right: 0.5em;
+}
+#searchBox {
+    margin-left: -15em;
+
+
+}
+#searchBar{
+   
+    margin-left: -5em;
+    
+    width: 12em;
+    margin-right: -14em;
+    /*border: solid rgb(158, 63, 63) 2px; */
+}
+
+/*need to figure out how to position correctly because its interfering with account clicking/*
