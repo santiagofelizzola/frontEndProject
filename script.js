@@ -1,5 +1,5 @@
 //this makes the generate button disappear after clicking
-document.getElementById('generateBtnIcon').addEventListener('click', function generateSite(){
+// document.getElementById('generateBtnIcon').addEventListener('click', function generateSite(){
     
     
     
@@ -96,16 +96,15 @@ document.getElementById('generateBtnIcon').addEventListener('click', function ge
     // grabTrailer()
     
     
+    const titleCodes=[]
     
-    //
     poptv = async () => {
         const url = 'https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US';
         const options = {
             headers: {
                 method: 'GET',
-                'X-RapidAPI-Key': '48e1d91eaamsh7d1603a58366f17p12af73jsn09e18c026e08',
                 'X-RapidAPI-Key': '80b360fcefmsh174cc3d1b1f6f97p1d3709jsn5ee1ff6263e8',  //df
-                'X-RapidAPI-Host': 'imdb8.p.rapidapi.com',
+                'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
                 
             }
         };
@@ -113,26 +112,37 @@ document.getElementById('generateBtnIcon').addEventListener('click', function ge
         try {
             const response = await fetch("https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US", options);
             const result = await response.json();
-            title.textContent=result;
-            document.getElementById('contentDiv').appendChild(title);
+            tvData=result;
+
+
+
+            for (let i = 0; i < tvData.length; i++) {
+                tvData[i] = tvData[i].replaceAll("/title/", "");
+                tvData[i] = tvData[i].replaceAll("/", "")
+            }
+            
+            
+            const infoDiv=document.createElement('div');
+            infoDiv.textContent=result;
+            document.getElementById("description").appendChild(infoDiv);
             console.log(result);
         } catch (error) {
             console.error(error);
         }
     };
-    console.log(poptv);
+    poptv().then(() => {
+        console.log("TV data fetched and processed.");})
+        
+        // function extractID() {
+        //     const id = inputString.replace("/title/", "").replace("/", "");
+        //     return id;
+        // };
+        
+        // const inputString = "/title/000000/";
+        // const extractedID = extractID(inputString);
+        // console.log(extractedID); // Output: tt5180504
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-});
-console.log('');
     
     
     // * API data to incorporate later * //
