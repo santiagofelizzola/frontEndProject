@@ -158,9 +158,20 @@ const grabInfo = async () => {
 const executeInfo = async () => {
     try {
         const info = await grabInfo();
-        console.log(info)
+        console.log(info);
+
+        let posterImage = document.getElementById("poster")
+        posterImage.createElement("img")
+
     } catch (error) {
         console.error('An error occurred:', error);
     }
 }
 // console.log(executeInfo())
+
+//Test to post Image in Poster Div
+const postInfo = () => {
+    const imageURL = 'https://image.tmdb.org/t/p/original/wDWwtvkRRlgTiUr6TyLSMX8FCuZ.jpg'
+    const posterImage = document.getElementById("dynamicPoster");
+    posterImage.src = imageURL
+}
