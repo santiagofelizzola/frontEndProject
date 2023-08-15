@@ -186,12 +186,15 @@ const postTrailer = () => {
 // learned - we need to change the earlier async functions to find the youtube video ID, instead of the link so we can use 'https://www.youtube.com/embed/videoID' in the src
 postTrailer()
 
-//Test Function to input Title, Overview, & year
+//Test Function to input Title, Overview, year, and Cast
 const postInfo = () => {
-    const mediaTitle = document.getElementById("");
+    const mediaTitle = document.getElementById("mediaTitle");
     mediaTitle.innerText = "Scream VI";
-    const mediaOverview = document.getElementById("");
+    const mediaOverview = document.getElementById("mediaOverview");
     mediaOverview.innerText = "Following the latest Ghostface killings, the four survivors leave Woodsboro behind and start a fresh chapter.";
-    const releaseYear = document.getElementById("");
+    const releaseYear = document.getElementById("releaseYear");
     releaseYear.innerText = "2023";
+    const mediaCast = document.getElementById("mediaCast");
+    mediaCast.innerText = "Melissa Barrera, Jenna Ortega"
 }
+postInfo()
