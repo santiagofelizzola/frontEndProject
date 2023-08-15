@@ -196,5 +196,9 @@ const executeInfo = async () => {
 }
 // console.log(executeInfo())
 
+const generateButton = document.getElementById("generateBtn");
+generateButton.addEventListener("click", () => {
+    executeInfo()
+})
 
 
