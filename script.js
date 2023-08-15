@@ -27,11 +27,13 @@ const popMovieID = async () => {
             // console.log(moviesData[i])
         }
 
-        //Get random Movie ID
-        const randomMovie = Math.floor(Math.random() * moviesData.length);
-        console.log("Random index:", randomMovie);
-        console.log("Random element:", moviesData[randomMovie]);
-        return moviesData[randomMovie];
+        return moviesData
+
+        // //Get random Movie ID
+        // const randomMovie = Math.floor(Math.random() * moviesData.length);
+        // console.log("Random index:", randomMovie);
+        // console.log("Random element:", moviesData[randomMovie]);
+        // return moviesData[randomMovie];
 
     } catch (error) {
         console.error(error);
@@ -62,17 +64,52 @@ const popShowID = async () => {
             showData[i] = showData[i].replaceAll("/", "");
         }
 
-        //Get random TV ID
-        const randomShow = Math.floor(Math.random() * showData.length);
-        console.log("Random index:", randomShow);
-        console.log("Random element:", showData[randomShow]);
-        return showData[randomShow];
+        return showData
+
+        // //Get random TV ID
+        // const randomShow = Math.floor(Math.random() * showData.length);
+        // console.log("Random index:", randomShow);
+        // console.log("Random element:", showData[randomShow]);
+        // return showData[randomShow];
 
     } catch (error) {
         console.error(error);
     }
 }
 // console.log(popShowID())
+
+//Combined Media
+mediaMerge = (x,y) => {
+    let combinedArr = []
+
+    for(i=0; i < x.length; i++){
+        combinedArr.push(x[i])
+    } for(j=0; j < y.length; j++){
+        combinedArr.push(y[j])
+    } 
+    // console.log(combinedArr)
+    return combinedArr
+}
+
+const combinedMedia = async() => {
+    try {
+        const movieData = await popMovieID();
+        const tvShowData = await popShowID();
+        // console.log(movieData)
+        const combinedMediaArray = mediaMerge(movieData,tvShowData)
+        console.log(combinedMediaArray)
+
+        //Get random Movie ID
+        const randomMediaID = Math.floor(Math.random() * combinedMediaArray.length);
+        console.log("Random index:", randomMediaID);
+        console.log("Random element:", combinedMediaArray[randomMediaID]);
+        return combinedMediaArray[randomMediaID];
+
+    } catch (error) {
+        console.error('An error occurred:', error);
+    }
+}
+// console.log(combinedMedia())
 
 //Get Basic API w ttID embeded
 const getBasic = async (ttID) => {
@@ -81,7 +118,7 @@ const getBasic = async (ttID) => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': 'fa96c64051mshe57b38479c7104bp161232jsn5416a889dc93',
+            'X-RapidAPI-Key': '4c17913e8emsh9b101b9899fc9fcp1dd57ajsnf0c65e109735',
             'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
         }
     };
@@ -126,20 +163,28 @@ const grabTrailer = async () => {
 // Grab as much info as possible from one fetch
 const grabInfo = async () => {
     try {
-        const ttNum = await popMovieID();
+        const ttNum = await combinedMedia();
+        console.log(ttNum)
         const data = await getBasic(ttNum);
+        console.log(data)
         const title = data.result.title;
         console.log(title);
+
         const overview = data.result.overview;
         console.log(overview);
+
         const posterURL = data.result.posterURLs.original;
         console.log(posterURL);
+
         const youtubeID = data.result.youtubeTrailerVideoId;
         console.log(youtubeID);
+
         const cast = data.result.cast.join(', ');
         console.log(cast);
+
         const releaseYear = data.result.year;
         console.log(releaseYear);
+
         return { title, overview, posterURL, youtubeID, cast, releaseYear };
     } catch (error) {
         console.error('An error occurred:', error);
@@ -165,7 +210,7 @@ const postInfo = (title, overview, releaseYear, cast) => {
     mediaOverview.innerText = overview;
 
     const movieYear = document.getElementById("releaseYear");
-    movieYear.innerText = releaseYear;
+    movieYear.innerText = releaseYear || 'year not available';
 
     const mediaCast = document.getElementById("mediaCast");
     mediaCast.innerText = cast
@@ -185,7 +230,7 @@ const executeInfo = async () => {
         console.error('An error occurred:', error);
     }
 }
-// console.log(executeInfo())
+console.log(executeInfo())
 // executeInfo()
 
 // Button will populate the screen w info when clicked.
