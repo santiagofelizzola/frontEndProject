@@ -143,11 +143,13 @@ const grabInfo = async () => {
         console.log(overview)
         const posterURL = data.result.posterURLs.original;
         console.log(posterURL)
-        const trailerLink = data.result.youtubeTrailerVideoLink;
-        console.log(trailerLink)
+        const youtubeID = data.result.youtubeTrailerVideoID;
+        console.log(youtubeID)
         const cast = data.result.cast.join(', ');
         console.log(cast)
-        return { title, overview, posterURL, trailerLink, cast }
+        const releaseYear = data.result.year;
+        console.log(releaseYear)
+        return { title, overview, posterURL, youtubeID, cast, releaseYear }
     } catch (error) {
         console.error('An error occurred:', error);
         await grabInfo()
@@ -155,19 +157,7 @@ const grabInfo = async () => {
 }
 // console.log(grabInfo())
 
-const executeInfo = async () => {
-    try {
-        const info = await grabInfo();
-        console.log(info);
-
-        let posterImage = document.getElementById("poster")
-        posterImage.createElement("img")
-
-    } catch (error) {
-        console.error('An error occurred:', error);
-    }
-}
-// console.log(executeInfo())
+// Figuring out how to call & input info into webpage dynamically
 
 //Test to post Image in Poster Div
 const postImage = () => {
@@ -198,3 +188,19 @@ const postInfo = () => {
     mediaCast.innerText = "Melissa Barrera, Jenna Ortega"
 }
 postInfo()
+
+// Test to now merge the last 3 functions into executeInfo
+
+const executeInfo = async () => {
+    try {
+        const info = await grabInfo();
+        console.log(info);
+
+        let posterImage = document.getElementById("poster")
+        posterImage.createElement("img")
+
+    } catch (error) {
+        console.error('An error occurred:', error);
+    }
+}
+// console.log(executeInfo())
