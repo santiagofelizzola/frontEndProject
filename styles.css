@@ -158,4 +158,45 @@ body{
     /*border: solid rgb(158, 63, 63) 2px; */
 }
 
-/*need to figure out how to position correctly because its interfering with account clicking/*
+/* need to figure out how to position correctly because its interfering with account clicking */
+
+/* Santiago's Additions */
+#posterDiv {
+    overflow: hidden;
+    padding: 0;
+}
+#dynamicPoster {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+#trailerDiv {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
+#dynamicTrailer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+#mediaDiv {
+    display: flex;
+    height: auto;
+    padding: 0;
+}
+.trailer{
+    flex: 1.5;
+}
+
+.poster{
+    flex: 1;
+}
+#generateBtn{
+    width: 100%;
+    background-color: #3498db;
+}
