@@ -176,3 +176,10 @@ const postImage = () => {
     posterImage.src = imageURL
 }
 postImage()
+
+// Test function for trailer input
+const postTrailer = () => {
+    const trailerURL = 'https://www.youtube.com/watch?v=1Ie2qmAOc6Q';
+    const trailerVideo = document.getElementById("");
+    trailerVideo.src = trailerURL
+}
