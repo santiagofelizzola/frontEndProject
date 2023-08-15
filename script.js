@@ -1,6 +1,6 @@
 // IMDb Most Popular Movies - Used to collect the specific ttID to know what movie is being targeted
-let moviesData;
 const popMovieID = async () => {
+    let moviesData;
     const popMovieURL = "https://imdb8.p.rapidapi.com/title/get-most-popular-movies?homeCountry=US&purchaseCountry=US&currentCountry=US"
     const url = popMovieURL;
     const options = {
