@@ -165,7 +165,7 @@ const postImage = () => {
     const posterImage = document.getElementById("dynamicPoster");
     posterImage.src = imageURL
 }
-postImage()
+// postImage()
 
 // Test function for trailer input
 const postTrailer = () => {
@@ -174,7 +174,15 @@ const postTrailer = () => {
     trailerVideo.src = trailerURL
 }
 // learned - we need to change the earlier async functions to find the youtube video ID, instead of the link so we can use 'https://www.youtube.com/embed/videoID' in the src
-postTrailer()
+// postTrailer()
+
+// Attempt to grab both poster & media in one go
+const postMedia = (posterURL, youtubeID) => {
+    const posterImage = document.getElementById("dynamicPoster");
+    posterImage.src = posterURL;
+    const trailerVideo = document.getElementById("dynamicTrailer");
+    trailerVideo.src = `https://www.youtube.com/embed/${youtubeID}`;
+}
 
 //Test Function to input Title, Overview, year, and Cast
 const postInfo = (title, overview, releaseYear, cast) => {
@@ -198,11 +206,12 @@ const executeInfo = async () => {
     try {
         const info = await grabInfo();
         console.log(info);
-        postInfo(info.title, info.overview, info.releaseYear, info.cast)
+        postInfo(info.title, info.overview, info.releaseYear, info.cast);
+        postMedia(info.posterURL, info.youtubeID)
 
     } catch (error) {
         console.error('An error occurred:', error);
     }
 }
-// console.log(executeInfo())
+console.log(executeInfo())
 
