@@ -1,3 +1,5 @@
+import * as mdb from 'mdb-ui-kit'; // lib
+
 // IMDb Most Popular Movies - Used to collect the specific ttID to know what movie is being targeted
 const popMovieID = async () => {
     let moviesData;
