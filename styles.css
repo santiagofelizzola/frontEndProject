@@ -196,3 +196,7 @@ body{
 .poster{
     flex: 1;
 }
+#generateBtn{
+    width: 100%;
+    background-color: #3498db;
+}
