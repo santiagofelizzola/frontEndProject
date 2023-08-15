@@ -81,7 +81,7 @@ const getBasic = async (ttID) => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '48e1d91eaamsh7d1603a58366f17p12af73jsn09e18c026e08',
+            'X-RapidAPI-Key': '80b360fcefmsh174cc3d1b1f6f97p1d3709jsn5ee1ff6263e8',
             'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
         }
     };
@@ -143,7 +143,7 @@ const grabInfo = async () => {
         return { title, overview, posterURL, youtubeID, cast, releaseYear };
     } catch (error) {
         console.error('An error occurred:', error);
-        await grabInfo()
+        // await grabInfo()
     }
 }
 // console.log(grabInfo())
@@ -186,13 +186,10 @@ const executeInfo = async () => {
     }
 }
 // console.log(executeInfo())
+// executeInfo()
 
 // Button will populate the screen w info when clicked.
-
 const generateButton = document.getElementById("generateBtn");
-generateButton.innerText = "Placeholder (Click Here)"
 generateButton.addEventListener("click", () => {
     executeInfo() // Remember, we only have 100 API requests per day
 })
-
-

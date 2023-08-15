@@ -55,7 +55,6 @@ body{
     border: solid rgb(15, 15, 15) 2px;
     height: 40%;
     display: flex;
-
 }
 .trailer{
     border:solid rgb(31, 30, 31) 2px;
@@ -120,12 +119,11 @@ body{
     align-items: center;
 }
 
-.movieGen img{
-    width: 75%;
+.genCaption{
+    margin-top: -1rem;
 }
-
 .movieGen button {
-    width: 200px;
+    width: 40%;
     background-color: white;
     border: solid white;
 }
@@ -201,7 +199,7 @@ body{
     flex: 1;
 }
 #generateBtn{
-    width: 100%;
+    width: 50%;
    
 }
 /* @media screen and (max-width: 480px){
