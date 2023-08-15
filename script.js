@@ -179,7 +179,9 @@ postImage()
 
 // Test function for trailer input
 const postTrailer = () => {
-    const trailerURL = 'https://www.youtube.com/watch?v=1Ie2qmAOc6Q';
-    const trailerVideo = document.getElementById("");
+    const trailerURL = 'https://www.youtube.com/embed/1Ie2qmAOc6Q';
+    const trailerVideo = document.getElementById("dynamicTrailer");
     trailerVideo.src = trailerURL
 }
+// learned - we need to change the code to find the youtube video ID, instead of the link so we can use 'https://www.youtube.com/embed/videoID' in the src
+postTrailer()
