@@ -16,8 +16,6 @@
     <title>Media Flare</title>
   </head>
 
-
-
     <body>
        
       <nav id="nav" class="navbar navbar-expand-lg bg-body-tertiary">
@@ -63,21 +61,26 @@
         </div>
       </nav>
 
-      <div class="generator">
-        <div class="poster">poster</div>
-        <div class="trailer">trailer</div>
+      <div id="mediaDiv" class="generator">
+        <div id="posterDiv" class="poster">
+          <img id="dynamicPoster" src="" alt="Dynamic Media Poster">
+        </div>
+        <div id="trailerDiv" class="trailer">
+          <iframe id="dynamicTrailer" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
     </div>
-    <!--<div class="buttonDiv">
-        <button class="generateBtn"></button>
-    </div>-->
+    <div class="buttonDiv">
+        <button id="generateBtn" class="generateBtn"></button>
+    </div>
 
-    <div class="info">
-       <div class="description">
-        <h3 class="title">title</h3>
-        <div class="synopsis">synopsis</div>
+    <div id="infoDiv" class="info">
+       <div id="titleAndOverview" class="description">
+        <h3 id="mediaTitle" class="title">Title</h3>
+        <div id="releaseYear"></div>
+        <div id="mediaOverview" class="synopsis">Overview</div>
        </div>
        
-       <div class="cast">cast</div>
+       <div id="mediaCast" class="cast">cast</div>
        <div class="watch">watch</div>
        
     </div>

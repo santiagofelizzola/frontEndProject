@@ -1,6 +1,6 @@
 // IMDb Most Popular Movies - Used to collect the specific ttID to know what movie is being targeted
-let moviesData;
 const popMovieID = async () => {
+    let moviesData;
     const popMovieURL = "https://imdb8.p.rapidapi.com/title/get-most-popular-movies?homeCountry=US&purchaseCountry=US&currentCountry=US"
     const url = popMovieURL;
     const options = {
@@ -29,54 +29,48 @@ const popMovieID = async () => {
         const randomMovie = Math.floor(Math.random() * moviesData.length);
         console.log("Random index:", randomMovie);
         console.log("Random element:", moviesData[randomMovie]);
-        return moviesData[randomMovie]
+        return moviesData[randomMovie];
 
     } catch (error) {
         console.error(error);
     }
 }
-
 // console.log(popMovieID())
 
 
-poptv = async () => {
-    const url =
-    "https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US";
-  const options = {
-    headers: {
-      method: "GET",
-      "X-RapidAPI-Key": "80b360fcefmsh174cc3d1b1f6f97p1d3709jsn5ee1ff6263e8", //df
-      "X-RapidAPI-Host": "imdb8.p.rapidapi.com",
-    },
-  };
+popShowID = async () => {
+    let showData;
+    const popShowURL = "https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US"
+    const url = popShowURL;
+    const options = {
+        headers: {
+            method: "GET",
+            "X-RapidAPI-Key": "80b360fcefmsh174cc3d1b1f6f97p1d3709jsn5ee1ff6263e8", //df
+            "X-RapidAPI-Host": "imdb8.p.rapidapi.com",
+        },
+    };
 
-  try {
-    const response = await fetch(
-      "https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US",
-      options
-    );
-    const result = await response.json();
-    tvData = result;
+    try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+        showData = result;
 
-    for (let i = 0; i < tvData.length; i++) {
-      tvData[i] = tvData[i].replaceAll("/title/", "");
-      tvData[i] = tvData[i].replaceAll("/", "");
+        for (let i = 0; i < showData.length; i++) {
+            showData[i] = showData[i].replaceAll("/title/", "");
+            showData[i] = showData[i].replaceAll("/", "");
+        }
+
+        //Get random TV ID
+        const randomShow = Math.floor(Math.random() * showData.length);
+        console.log("Random index:", randomShow);
+        console.log("Random element:", showData[randomShow]);
+        return showData[randomShow];
+
+    } catch (error) {
+        console.error(error);
     }
-    //Get random TV ID
-    const randomShow = Math.floor(Math.random() * tvData.length);
-    console.log("Random index:", randomShow);
-    console.log("Random element:", tvData[randomShow]);
-    return tvData[randomShow];
-    console.log(tvData);
-
-    const infoDiv = document.createElement("div");
-    infoDiv.textContent = result;
-    document.getElementById("description").appendChild(infoDiv);
-    console.log(result);
-  } catch (error) {
-    console.error(error);
-  }
-};
+}
+// console.log(popShowID())
 
 //Get Basic API w ttID embeded
 const getBasic = async (ttID) => {
@@ -125,38 +119,78 @@ const grabTrailer = async () => {
 };
 // console.log(grabTrailer())
 
-// * API data to incorporate later * //
 
-    // Most Popular TV-Shows
-        // URL: 'https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US'
-        // Will give tv shows // will need to extract ttID just as we did with Popular Movies
-
-    // Film Info: Images, Title, Genres, Plot, # of Seasons
-        // URL: 'https://imdb8.p.rapidapi.com/title/get-overview-details?tconst=tt5180504&currentCountry=US'
-        // Will only work with ttID dynamically embeded in URL
-
-    // We should only use Streaming Services for the trailer,  streaming info, & cast because there are only 100 calls/day with each key.
-    // We can get all the other info from IMDb
 
 // Grab as much info as possible from one fetch
-const grabInfo = async() => {
-    try { 
+const grabInfo = async () => {
+    try {
         const ttNum = await popMovieID();
         const data = await getBasic(ttNum);
         const title = data.result.title;
-        console.log(title)
-        const overview = data.result.overview
-        console.log(overview)
+        console.log(title);
+        const overview = data.result.overview;
+        console.log(overview);
         const posterURL = data.result.posterURLs.original;
-        console.log(posterURL)
-        const trailerLink = data.result.youtubeTrailerVideoLink;
-        console.log(trailerLink)
+        console.log(posterURL);
+        const youtubeID = data.result.youtubeTrailerVideoId;
+        console.log(youtubeID);
         const cast = data.result.cast.join(', ');
-        console.log(cast)
-        return {title, overview, posterURL, trailerLink, cast}
-    } catch(error) {
+        console.log(cast);
+        const releaseYear = data.result.year;
+        console.log(releaseYear);
+        return { title, overview, posterURL, youtubeID, cast, releaseYear };
+    } catch (error) {
         console.error('An error occurred:', error);
         await grabInfo()
     }
 }
 // console.log(grabInfo())
+
+// Async function that posts both media poster and youtube video on page
+const postMedia = (posterURL, youtubeID) => {
+    const posterImage = document.getElementById("dynamicPoster");
+    posterImage.src = posterURL;
+    const trailerVideo = document.getElementById("dynamicTrailer");
+    trailerVideo.src = `https://www.youtube.com/embed/${youtubeID}`;
+}
+
+//Test Function to input Title, Overview, Realease Year, and Cast
+const postInfo = (title, overview, releaseYear, cast) => {
+    const mediaTitle = document.getElementById("mediaTitle");
+    mediaTitle.innerText = title;
+
+    const mediaOverview = document.getElementById("mediaOverview");
+    mediaOverview.innerText = overview;
+
+    const movieYear = document.getElementById("releaseYear");
+    movieYear.innerText = releaseYear;
+
+    const mediaCast = document.getElementById("mediaCast");
+    mediaCast.innerText = cast
+}
+// postInfo()
+
+// Test to now merge the last 3 functions into executeInfo
+// Async Function that will populate the page with media information
+const executeInfo = async () => {
+    try {
+        const info = await grabInfo();
+        console.log(info);
+        postInfo(info.title, info.overview, info.releaseYear, info.cast);
+        postMedia(info.posterURL, info.youtubeID)
+
+    } catch (error) {
+        console.error('An error occurred:', error);
+    }
+}
+// console.log(executeInfo())
+
+// Button will populate the screen w info when clicked.
+
+const generateButton = document.getElementById("generateBtn");
+generateButton.innerText = "Placeholder (Click Here)"
+generateButton.addEventListener("click", () => {
+    executeInfo() // Remember, we only have 100 API requests per day
+})
+
+
