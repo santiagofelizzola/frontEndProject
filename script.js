@@ -170,8 +170,9 @@ const executeInfo = async () => {
 // console.log(executeInfo())
 
 //Test to post Image in Poster Div
-const postInfo = () => {
+const postImage = () => {
     const imageURL = 'https://image.tmdb.org/t/p/original/wDWwtvkRRlgTiUr6TyLSMX8FCuZ.jpg'
     const posterImage = document.getElementById("dynamicPoster");
     posterImage.src = imageURL
 }
+postImage()

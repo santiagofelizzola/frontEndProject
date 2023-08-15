@@ -158,4 +158,15 @@ body{
     /*border: solid rgb(158, 63, 63) 2px; */
 }
 
-/*need to figure out how to position correctly because its interfering with account clicking/*
+/* need to figure out how to position correctly because its interfering with account clicking */
+
+/* Santiago's Additions */
+#posterDiv {
+    overflow: hidden;
+    padding: 0;
+}
+#dynamicPoster {
+    width: 100%;
+    height: auto;
+    display: block;
+}
