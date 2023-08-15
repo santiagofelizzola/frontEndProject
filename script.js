@@ -183,5 +183,15 @@ const postTrailer = () => {
     const trailerVideo = document.getElementById("dynamicTrailer");
     trailerVideo.src = trailerURL
 }
-// learned - we need to change the code to find the youtube video ID, instead of the link so we can use 'https://www.youtube.com/embed/videoID' in the src
+// learned - we need to change the earlier async functions to find the youtube video ID, instead of the link so we can use 'https://www.youtube.com/embed/videoID' in the src
 postTrailer()
+
+//Test Function to input Title, Overview, & year
+const postInfo = () => {
+    const mediaTitle = document.getElementById("");
+    mediaTitle.innerText = "Scream VI";
+    const mediaOverview = document.getElementById("");
+    mediaOverview.innerText = "Following the latest Ghostface killings, the four survivors leave Woodsboro behind and start a fresh chapter.";
+    const releaseYear = document.getElementById("");
+    releaseYear.innerText = "2023";
+}
