@@ -184,13 +184,10 @@ const executeInfo = async () => {
     }
 }
 // console.log(executeInfo())
+// executeInfo()
 
 // Button will populate the screen w info when clicked.
-
 const generateButton = document.getElementById("generateBtn");
-generateButton.innerText = "Placeholder (Click Here)"
 generateButton.addEventListener("click", () => {
     executeInfo() // Remember, we only have 100 API requests per day
 })
-
-
