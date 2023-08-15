@@ -138,18 +138,18 @@ const grabInfo = async () => {
         const ttNum = await popMovieID();
         const data = await getBasic(ttNum);
         const title = data.result.title;
-        console.log(title)
-        const overview = data.result.overview
-        console.log(overview)
+        console.log(title);
+        const overview = data.result.overview;
+        console.log(overview);
         const posterURL = data.result.posterURLs.original;
-        console.log(posterURL)
-        const youtubeID = data.result.youtubeTrailerVideoID;
-        console.log(youtubeID)
+        console.log(posterURL);
+        const youtubeID = data.result.youtubeTrailerVideoId;
+        console.log(youtubeID);
         const cast = data.result.cast.join(', ');
-        console.log(cast)
+        console.log(cast);
         const releaseYear = data.result.year;
-        console.log(releaseYear)
-        return { title, overview, posterURL, youtubeID, cast, releaseYear }
+        console.log(releaseYear);
+        return { title, overview, posterURL, youtubeID, cast, releaseYear };
     } catch (error) {
         console.error('An error occurred:', error);
         await grabInfo()
@@ -177,17 +177,20 @@ const postTrailer = () => {
 postTrailer()
 
 //Test Function to input Title, Overview, year, and Cast
-const postInfo = () => {
+const postInfo = (title, overview, releaseYear, cast) => {
     const mediaTitle = document.getElementById("mediaTitle");
-    mediaTitle.innerText = "Scream VI";
+    mediaTitle.innerText = title;
+
     const mediaOverview = document.getElementById("mediaOverview");
-    mediaOverview.innerText = "Following the latest Ghostface killings, the four survivors leave Woodsboro behind and start a fresh chapter.";
-    const releaseYear = document.getElementById("releaseYear");
-    releaseYear.innerText = "2023";
+    mediaOverview.innerText = overview;
+
+    const movieYear = document.getElementById("releaseYear");
+    movieYear.innerText = releaseYear;
+
     const mediaCast = document.getElementById("mediaCast");
-    mediaCast.innerText = "Melissa Barrera, Jenna Ortega"
+    mediaCast.innerText = cast
 }
-postInfo()
+// postInfo()
 
 // Test to now merge the last 3 functions into executeInfo
 
@@ -195,12 +198,11 @@ const executeInfo = async () => {
     try {
         const info = await grabInfo();
         console.log(info);
-
-        let posterImage = document.getElementById("poster")
-        posterImage.createElement("img")
+        postInfo(info.title, info.overview, info.releaseYear, info.cast)
 
     } catch (error) {
         console.error('An error occurred:', error);
     }
 }
 // console.log(executeInfo())
+
