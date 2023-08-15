@@ -157,25 +157,6 @@ const grabInfo = async () => {
 }
 // console.log(grabInfo())
 
-// Figuring out how to call & input info into webpage dynamically
-
-//Test to post Image in Poster Div
-const postImage = () => {
-    const imageURL = 'https://image.tmdb.org/t/p/original/wDWwtvkRRlgTiUr6TyLSMX8FCuZ.jpg'
-    const posterImage = document.getElementById("dynamicPoster");
-    posterImage.src = imageURL
-}
-// postImage()
-
-// Test function for trailer input
-const postTrailer = () => {
-    const trailerURL = 'https://www.youtube.com/embed/1Ie2qmAOc6Q';
-    const trailerVideo = document.getElementById("dynamicTrailer");
-    trailerVideo.src = trailerURL
-}
-// learned - we need to change the earlier async functions to find the youtube video ID, instead of the link so we can use 'https://www.youtube.com/embed/videoID' in the src
-// postTrailer()
-
 // Attempt to grab both poster & media in one go
 const postMedia = (posterURL, youtubeID) => {
     const posterImage = document.getElementById("dynamicPoster");
@@ -213,5 +194,7 @@ const executeInfo = async () => {
         console.error('An error occurred:', error);
     }
 }
-console.log(executeInfo())
+// console.log(executeInfo())
+
+
 
