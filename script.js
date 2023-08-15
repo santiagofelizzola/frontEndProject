@@ -119,18 +119,7 @@ const grabTrailer = async () => {
 };
 // console.log(grabTrailer())
 
-// * API data to incorporate later * //
 
-// Most Popular TV-Shows
-// URL: 'https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US'
-// Will give tv shows // will need to extract ttID just as we did with Popular Movies
-
-// Film Info: Images, Title, Genres, Plot, # of Seasons
-// URL: 'https://imdb8.p.rapidapi.com/title/get-overview-details?tconst=tt5180504&currentCountry=US'
-// Will only work with ttID dynamically embeded in URL
-
-// We should only use Streaming Services for the trailer,  streaming info, & cast because there are only 100 calls/day with each key.
-// We can get all the other info from IMDb
 
 // Grab as much info as possible from one fetch
 const grabInfo = async () => {
@@ -157,7 +146,7 @@ const grabInfo = async () => {
 }
 // console.log(grabInfo())
 
-// Attempt to grab both poster & media in one go
+// Async function that posts both media poster and youtube video on page
 const postMedia = (posterURL, youtubeID) => {
     const posterImage = document.getElementById("dynamicPoster");
     posterImage.src = posterURL;
@@ -165,7 +154,7 @@ const postMedia = (posterURL, youtubeID) => {
     trailerVideo.src = `https://www.youtube.com/embed/${youtubeID}`;
 }
 
-//Test Function to input Title, Overview, year, and Cast
+//Test Function to input Title, Overview, Realease Year, and Cast
 const postInfo = (title, overview, releaseYear, cast) => {
     const mediaTitle = document.getElementById("mediaTitle");
     mediaTitle.innerText = title;
@@ -182,7 +171,7 @@ const postInfo = (title, overview, releaseYear, cast) => {
 // postInfo()
 
 // Test to now merge the last 3 functions into executeInfo
-
+// Async Function that will populate the page with media information
 const executeInfo = async () => {
     try {
         const info = await grabInfo();
@@ -196,10 +185,12 @@ const executeInfo = async () => {
 }
 // console.log(executeInfo())
 
+// Button will populate the screen w info when clicked.
+
 const generateButton = document.getElementById("generateBtn");
 generateButton.innerText = "Placeholder (Click Here)"
 generateButton.addEventListener("click", () => {
-    executeInfo()
+    executeInfo() // Remember, we only have 100 API requests per day
 })
 
 
