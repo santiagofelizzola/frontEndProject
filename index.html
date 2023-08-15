@@ -1,91 +1,107 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- <link rel="stylesheet" href="style.css"> -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-        <link rel="icon" type="image/x-icon" href="images/video.png">
-        <link rel="stylesheet" href="styles.css">
-        
-    <title>Media Flare</title>
-  </head>
 
-    <body>
-       
-      <nav id="nav" class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <img class="reel" src="images/kisspng-film-reel-clip-art-film-reel-5a77adaada3615.0224609415177926828938.png" alt="" class="scr">
-          <a class="navbar-brand" href="#">Media Flare</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li id="list" class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Your List</a>
-              </li>
-             
-              <li id="explore" class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Explore
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Comedy</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Drama</a></li>
-                </ul>
-              
-            </ul>
-            <div class="gen">
-            <a class="" href="">
-                <img class="generateBtnIcon" src="images/video.png" alt="generateBtnIcon">
-              </a></div>
-              <div class="button">
-            <form id="searchBar" class="d-flex" role="search">
-              <input id="searchBox" class="form-control me-2" type="search" placeholder="Titles" aria-label="Search">
-              <button id="searchButton" class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
-            <li id="acct" class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Account</a>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+  <link rel="icon" type="image/x-icon" href="images/video.png">
+  <link rel="stylesheet" href="styles.css">
+
+  <title>Media Flare</title>
+</head>
+
+<body>
+  <div class="body-container">
+    <nav id="nav" class="navbar navbar-expand-lg bg-body-tertiary">
+      <div id="navDiv" class="container-fluid">
+        <img class="reel" src="images/kisspng-film-reel-clip-art-film-reel-5a77adaada3615.0224609415177926828938.png"
+          alt="" class="scr">
+        <a class="navbar-brand" href="#">Media Flare</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li id="list" class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Your List</a>
             </li>
-          </div>
-        </div>
-      </nav>
 
-      <div id="mediaDiv" class="generator">
-        <div id="posterDiv" class="poster">
-          <img id="dynamicPoster" src="" alt="Dynamic Media Poster">
+            <li id="explore" class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Explore
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Comedy</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Drama</a></li>
+              </ul>
+
+          </ul>
+
+          <form id="searchBar" class="d-flex" role="search">
+            <input id="searchBox" class="form-control me-2" type="search" placeholder="Titles" aria-label="Search">
+            <button id="searchButton" class="btn btn-outline-success" type="submit">Search</button>
+          </form>
         </div>
-        <div id="trailerDiv" class="trailer">
-          <iframe id="dynamicTrailer" src="" frameborder="0" allowfullscreen></iframe>
-        </div>
+        <li id="acct" class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Account</a>
+        </li>
+      </div>
+  </div>
+  </nav>
+
+  <div class="banner">
+    <img class="film" src="images/Screen Shot 2023-08-14 at 11.20.35 AM.png" alt=""><img class="film"
+      src="images/Screen Shot 2023-08-14 at 11.20.35 AM.png" alt="">
+  </div>
+
+
+
+  <div id="mediaDiv" class="generator">
+    <div id="posterDiv" class="poster">
+      <img id="dynamicPoster" src="" alt="Dynamic Media Poster">
     </div>
-    <div class="buttonDiv">
-        <button id="generateBtn" class="generateBtn"></button>
+    <div id="trailerDiv" class="trailer">
+      <iframe id="dynamicTrailer" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="movieGen">
+    <button class="movGenBtn" id="movGenBtn" onclick="">
+      <img src="./images/1910.i309.028.F.m004.c7.cinema film production realistic transparent-03.jpg" alt="" srcset="">
+      <div class="genCaption">Surprise Me</div>
+    </button>
+  </div>
+
+  <div class="info">
+    <div class="description">
+      <h3 class="title">title</h3>
+      <div class="synopsis">synopsis</div>
     </div>
 
-    <div id="infoDiv" class="info">
-       <div id="titleAndOverview" class="description">
-        <h3 id="mediaTitle" class="title">Title</h3>
-        <div id="releaseYear"></div>
-        <div id="mediaOverview" class="synopsis">Overview</div>
-       </div>
-       
-       <div id="mediaCast" class="cast">cast</div>
-       <div class="watch">watch</div>
-       
-    </div>
-   
-    <script src="script.js"></script>
+    <div class="cast">cast</div>
+    <div class="watch">watch</div>
+
+  </div>
+
+  <script src="script.js"></script>
 </body>
-</html>
 
+</html>
