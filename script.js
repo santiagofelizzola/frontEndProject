@@ -29,55 +29,48 @@ const popMovieID = async () => {
         const randomMovie = Math.floor(Math.random() * moviesData.length);
         console.log("Random index:", randomMovie);
         console.log("Random element:", moviesData[randomMovie]);
-        return moviesData[randomMovie]
+        return moviesData[randomMovie];
 
     } catch (error) {
         console.error(error);
     }
 }
-
 // console.log(popMovieID())
 
 
-// poptv = async () => {
-//     const titleCodes;
-//     const url =
-//     "https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US";
-//   const options = {
-//     headers: {
-//       method: "GET",
-//       "X-RapidAPI-Key": "80b360fcefmsh174cc3d1b1f6f97p1d3709jsn5ee1ff6263e8", //df
-//       "X-RapidAPI-Host": "imdb8.p.rapidapi.com",
-//     },
-//   };
+popShowID = async () => {
+    let showData;
+    const popShowURL = "https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US"
+    const url = popShowURL;
+    const options = {
+        headers: {
+            method: "GET",
+            "X-RapidAPI-Key": "80b360fcefmsh174cc3d1b1f6f97p1d3709jsn5ee1ff6263e8", //df
+            "X-RapidAPI-Host": "imdb8.p.rapidapi.com",
+        },
+    };
 
-//   try {
-//     const response = await fetch(
-//       "https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US",
-//       options
-//     );
-//     const result = await response.json();
-//     tvData = result;
+    try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+        showData = result;
 
-//     for (let i = 0; i < tvData.length; i++) {
-//       tvData[i] = tvData[i].replaceAll("/title/", "");
-//       tvData[i] = tvData[i].replaceAll("/", "");
-//     }
-//     //Get random TV ID
-//     const randomShow = Math.floor(Math.random() * tvData.length);
-//     console.log("Random index:", randomShow);
-//     console.log("Random element:", tvData[randomShow]);
-//     return tvData[randomShow];
-//     console.log(tvData);
+        for (let i = 0; i < showData.length; i++) {
+            showData[i] = showData[i].replaceAll("/title/", "");
+            showData[i] = showData[i].replaceAll("/", "");
+        }
 
-//     const infoDiv = document.createElement("div");
-//     infoDiv.textContent = result;
-//     document.getElementById("description").appendChild(infoDiv);
-//     console.log(result);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
+        //Get random TV ID
+        const randomShow = Math.floor(Math.random() * showData.length);
+        console.log("Random index:", randomShow);
+        console.log("Random element:", showData[randomShow]);
+        return showData[randomShow];
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+// console.log(popShowID())
 
 //Get Basic API w ttID embeded
 const getBasic = async (ttID) => {
@@ -128,20 +121,20 @@ const grabTrailer = async () => {
 
 // * API data to incorporate later * //
 
-    // Most Popular TV-Shows
-        // URL: 'https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US'
-        // Will give tv shows // will need to extract ttID just as we did with Popular Movies
+// Most Popular TV-Shows
+// URL: 'https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US'
+// Will give tv shows // will need to extract ttID just as we did with Popular Movies
 
-    // Film Info: Images, Title, Genres, Plot, # of Seasons
-        // URL: 'https://imdb8.p.rapidapi.com/title/get-overview-details?tconst=tt5180504&currentCountry=US'
-        // Will only work with ttID dynamically embeded in URL
+// Film Info: Images, Title, Genres, Plot, # of Seasons
+// URL: 'https://imdb8.p.rapidapi.com/title/get-overview-details?tconst=tt5180504&currentCountry=US'
+// Will only work with ttID dynamically embeded in URL
 
-    // We should only use Streaming Services for the trailer,  streaming info, & cast because there are only 100 calls/day with each key.
-    // We can get all the other info from IMDb
+// We should only use Streaming Services for the trailer,  streaming info, & cast because there are only 100 calls/day with each key.
+// We can get all the other info from IMDb
 
 // Grab as much info as possible from one fetch
-const grabInfo = async() => {
-    try { 
+const grabInfo = async () => {
+    try {
         const ttNum = await popMovieID();
         const data = await getBasic(ttNum);
         const title = data.result.title;
@@ -154,19 +147,19 @@ const grabInfo = async() => {
         console.log(trailerLink)
         const cast = data.result.cast.join(', ');
         console.log(cast)
-        return {title, overview, posterURL, trailerLink, cast}
-    } catch(error) {
+        return { title, overview, posterURL, trailerLink, cast }
+    } catch (error) {
         console.error('An error occurred:', error);
         await grabInfo()
     }
 }
 // console.log(grabInfo())
 
-const executeInfo = async() => {
+const executeInfo = async () => {
     try {
         const info = await grabInfo();
         console.log(info)
-    } catch(error) {
+    } catch (error) {
         console.error('An error occurred:', error);
     }
 }
