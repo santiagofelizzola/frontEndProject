@@ -1,4 +1,4 @@
-import * as mdb from 'mdb-ui-kit'; // lib
+// import * as mdb from 'mdb-ui-kit'; // lib
 
 // IMDb Most Popular Movies - Used to collect the specific ttID to know what movie is being targeted
 const popMovieID = async () => {
@@ -40,7 +40,7 @@ const popMovieID = async () => {
 // console.log(popMovieID())
 
 
-popShowID = async () => {
+const popShowID = async () => {
     let showData;
     const popShowURL = "https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows?homeCountry=US&purchaseCountry=US&currentCountry=US"
     const url = popShowURL;
@@ -81,7 +81,7 @@ const getBasic = async (ttID) => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '80b360fcefmsh174cc3d1b1f6f97p1d3709jsn5ee1ff6263e8',
+            'X-RapidAPI-Key': 'fa96c64051mshe57b38479c7104bp161232jsn5416a889dc93',
             'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
         }
     };
