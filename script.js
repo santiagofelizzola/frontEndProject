@@ -230,7 +230,7 @@ const executeInfo = async () => {
         console.error('An error occurred:', error);
     }
 }
-console.log(executeInfo())
+// console.log(executeInfo())
 // executeInfo()
 
 // Button will populate the screen w info when clicked.
