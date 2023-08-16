@@ -9,6 +9,7 @@ body{
 
 .reel{
     width: 10%;
+    height: auto;
 
 }
 #nav{
@@ -70,9 +71,9 @@ body{
     padding: 1em;
 
 }
-.info{
+.mediaInfo{
     /* border: solid rgb(86, 86, 100); */
-    height: 500px;
+    height: auto;
     display: grid;
     grid-template-columns: 50% 50%;
 
@@ -168,7 +169,7 @@ body{
 #posterDiv {
     overflow: hidden;
     padding: 0;
-    width: 85%;
+    width: 100%;
     height: auto;
     display: flex;
     /* border: solid black 1px; */
@@ -207,9 +208,18 @@ body{
 .poster{
     flex: 1;
 }
+
+@media (max-width:800px) {
+    .mediaInfo {
+        display: block;
+    }
+}
+#titleAndYear {
+    padding: 1em;
+}
 #generateBtn{
     width: 50%;
-    margin-bottom: -2em;
+    /* margin-bottom: -2em; */
 }
 .genCaption {
     font-weight: bolder;
