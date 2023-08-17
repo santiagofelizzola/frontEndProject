@@ -29,3 +29,8 @@ The code defines an asynchronous function called grabInfo that attempts to retri
 
 
 Js Libraries: Utilized Bootstrap and Material Design for Bootstrap v5 & v4
+
+<img src="images/Screen Shot 2023-08-17 at 3.46.10 PM.png" alt="Alt text" title="Optional title">
+<img src="images/Screen Shot 2023-08-17 at 3.46.23 PM.png" alt="Alt text" title="Optional title">
+<img src="images/Screen Shot 2023-08-17 at 3.46.41 PM.png" alt="Alt text" title="Optional title">
+<img src="images/Screen Shot 2023-08-17 at 3.47.19 PM.png" alt="Alt text" title="Optional title">
